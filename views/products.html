@@ -1,0 +1,25 @@
+{% extends './layout.html' %}
+{% block content %}
+<h2>Products for {{ selected }}</h2>
+<form class='well' method='post'>
+  <div class='form-group'>
+    <input class='form-control' name='name' placeholder='product name' />
+  </div>
+  <div class='form-group'>
+    <button class='btn btn-primary'>Save</button>
+  </div>
+</form>
+<ul class='list-group'>
+  {% for product in products %}
+  <li class='list-group-item'>
+    {{ product.name }}
+    <form method='post' action='/categories/{{ selected }}/products/{{product.id}}?_method=DELETE'>
+      <button class='btn btn-warning'>Delete</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+<form method='post' action='/categories/{{ selected }}?_method=DELETE'>
+  <button class='btn btn-danger'>Delete Category</button>
+</form>
+{% endblock %}

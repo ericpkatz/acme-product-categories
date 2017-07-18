@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css' />
+  </head>
+  <body>
+    <div class='container'>
+      <h1>Acme Product Categories</h1>
+      <ul class='nav nav-tabs'>
+        <li {% if !selected %}class='active'{% endif %}>
+          <a href='/'>Home</a>
+        </li>
+        {% for name in categoryNames %}
+        <li {% if name === selected %}class='active'{% endif %}>
+            <a href='/categories/{{ name }}/products'>
+              {{ name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% block content %}
+      Home
+      {% endblock %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{% extends './layout.html' %}
+{% block content %}
+<h2>Home</h2>
+
+<form class='well' method='post' action='/categories'>
+  <div class='form-group'>
+    <input class='form-control' name='name' placeholder='category name' />
+  </div>
+  <div class='form-group'>
+    <button class='btn btn-primary'>Save</button>
+  </div>
+</form>
+
+{% endblock %}
