@@ -13,34 +13,16 @@ app.use(require('method-override')('_method'));
 app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
 
+app.use(function(req, res, next){
+  res.locals.data = db.data;
+  next();
+});
+
 app.get('/', function(req, res, next){
   res.render('index', { categoryNames: db.getCategoryNames()});
 });
 
-app.get('/categories/:name/products', function(req, res, next){
-  res.render('products', { products: db.getProductsByCategory(req.params.name), categoryNames: db.getCategoryNames(), selected: req.params.name });
-});
-
-app.post('/categories/', function(req, res, next){
-  db.createCategory(req.body.name);
-  res.redirect(`/categories/${req.body.name}/products`);
-});
-
-app.delete('/categories/:name', function(req, res, next){
-  db.deleteCategory(req.params.name);
-  res.redirect(`/`);
-});
-
-app.post('/categories/:name/products', function(req, res, next){
-  db.createProduct(req.body, req.params.name);
-  res.redirect(`/categories/${req.params.name}/products`);
-});
-
-app.delete('/categories/:name/products/:id', function(req, res, next){
-  db.deleteProduct(req.params.name, req.params.id*1);
-  res.redirect(`/categories/${req.params.name}/products`);
-});
-
+app.use('/categories', require('./routes/categories'));
 
 var port = process.env.PORT || 3000;
 

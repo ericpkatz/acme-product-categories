@@ -1,0 +1,41 @@
+<ul class='list-group'>
+  <li class='list-group-item'>
+    Data Layer - db.js (~60 loc)
+    <pre>
+- store data in an object literal
+- export
+  - getCategoryNames
+  - getProductsByCategory
+  - createProduct
+  - deleteProduct
+  - updateProduct
+  - deleteCategory
+  - createCategory
+    </pre>
+  </li>
+  <li class='list-group-item'>
+    Server.js (~30 loc)
+    <pre>
+- GET '/'
+    </pre>
+  </li>
+  <li class='list-group-item'>
+    <pre>
+/routes/categories.js (~30 loc)
+- 5 route total
+- GET /categories/:name/products
+- POST /categories
+- DELETE /categories/:name
+- POST /categories/:name/products/
+- DELETE /categories/:name/products/:id
+    </pre>
+  </li>
+  <li class='list-group-item'>
+views/
+    <pre>
+- layout.html
+- index.html
+- products.html
+    </pre>
+  </li>
+</ul>

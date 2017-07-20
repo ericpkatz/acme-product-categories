@@ -53,7 +53,8 @@ module.exports = {
   deleteProduct,
   updateProduct,
   deleteCategory,
-  createCategory
+  createCategory,
+  data
 };
 
 createProduct({ name: 'foo 1'}, 'Foo Category');
